@@ -48,3 +48,14 @@
 (defn v*
   [a [x y]]
   [(* a x) (* a y)])
+
+(defn inside?
+  [W H [x y]]
+  (and (<= 0 x (dec W)) (<= 0 y (dec H))))
+
+(defn man-neighbours
+  [[x y]]
+  [[(inc x) y]
+   [x (inc y)]
+   [(dec x) y]
+   [x (dec y)]])

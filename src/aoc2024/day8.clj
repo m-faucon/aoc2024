@@ -31,15 +31,11 @@
     [(util/v+ ant1 (util/v* -1 v))
      (util/v+ ant2 v)]))
 
-(defn inside?
-  [W H [x y]]
-  (and (<= 0 x (dec W)) (<= 0 y (dec H))))
-
 (let [{:keys [antennas W H]} (-> (util/input-lines) (parse-input))]
   (->> (vals antennas)
        (mapcat pairs)
        (mapcat anti-nodes)
-       (filter (partial inside? W H))
+       (filter (partial util/inside? W H))
        set
        count))
 
@@ -56,9 +52,9 @@
   (let [v (util/v- ant2 ant1)]
     (concat
      (->> (iterate (partial util/v+ v) ant2)
-          (take-while (partial inside? W H)))
+          (take-while (partial util/inside? W H)))
      (->> (iterate (partial util/v+ (util/v* -1 v)) ant1)
-          (take-while (partial inside? W H))))))
+          (take-while (partial util/inside? W H))))))
 
 (let [{:keys [antennas W H]} (-> (util/input-lines) (parse-input))]
   (->> (vals antennas)
