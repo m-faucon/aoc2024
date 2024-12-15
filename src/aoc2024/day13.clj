@@ -47,6 +47,13 @@
 
 ;; part2
 
+;; NOTE(edit):
+;; wew, looking at other's solutions, it seems I much overcomplicated it.
+;; I try to solve the diophantine equations indepentantly, then to find
+;; a common solution i solve a 2x2 system
+;; But... I could just solve the input as a 2x2 system to begin with...
+;; whatever
+
 (defn update-section-part2
   [section]
   (-> section
